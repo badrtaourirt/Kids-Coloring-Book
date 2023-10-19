@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/main_bg"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@mipmap/main_bg" />
+
+    <RelativeLayout
+        android:id="@+id/reltop"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="190dp">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/name" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_below="@+id/main_bg"
+        android:id="@+id/native_frame"
+        android:layout_width="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_height="50dp"/>
+
+   <FrameLayout
+       android:layout_width="match_parent"
+       android:layout_height="300dp"
+       android:background="@color/black"
+       android:layout_below="@id/main_bg"
+       />
+
+    <LinearLayout
+        android:id="@+id/middle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_above="@+id/top"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/unicorn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/drawing" />
+
+        <ImageView
+            android:id="@+id/glow"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/glow" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/Textsize6"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="@dimen/Textsize6"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/back_1" />
+
+        <ImageView
+            android:id="@+id/btnRateUs"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/rate" />
+
+        <ImageView
+            android:id="@+id/btnShare"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/share" />
+
+        <ImageView
+            android:id="@+id/btnprivacy"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/privacy" />
+    </LinearLayout>
+
+</RelativeLayout>

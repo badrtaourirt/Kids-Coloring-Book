@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/top_l1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2.9"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/leftTop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp">
+
+                <ImageView
+                    android:id="@+id/pen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/glow_pen_plain" />
+                /&gt;
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp">
+
+                <ImageView
+                    android:id="@+id/dashed_pen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/glow_pen_dashed" />
+                /&gt;
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp">
+
+                <ImageView
+                    android:id="@+id/dotted_pen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/glow_pen_dotted" />
+                /&gt;
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp">
+
+                <ImageView
+                    android:id="@+id/eraser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/menu4eraser" />
+                /&gt;
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp">
+
+                <ImageView
+                    android:id="@+id/save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/menu5save" />
+                /&gt;
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp">
+
+                <ImageView
+                    android:id="@+id/newPage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/menu7close" />
+                /&gt;
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/but_7" />
+                /&gt;
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/divider"
+            android:orientation="horizontal"
+            android:scaleY="-1" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/horizontal_recycler_view"
+        android:layout_below="@+id/leftTop"
+        android:layout_weight="0.8">
+
+        <RelativeLayout
+            android:id="@+id/drawing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/black1"
+                android:orientation="vertical">
+
+                <com.coloring.page.DrawingPictureGlow
+                    android:id="@+id/draw"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:id="@+id/iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/spark"
+                    android:visibility="invisible" />
+            </FrameLayout>
+
+            <androidx.drawerlayout.widget.DrawerLayout
+                android:id="@+id/dr_layout_brush"
+                android:layout_width="match_parent"
+                tools:openDrawer="start"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/drawer_brush"
+                    android:layout_width="70dp"
+                    android:layout_height="180dp"
+                    android:layout_gravity="left|center_vertical|center_horizontal|center"
+                    android:background="@drawable/tab"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:rotation="180">
+
+                    <ImageView
+                        android:id="@+id/ivBrushSize3"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/Textsize50"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/bbig_dot" />
+
+                    <ImageView
+                        android:id="@+id/ivBrushSize2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/Textsize50"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/mmedium_dot" />
+
+                    <ImageView
+                        android:id="@+id/ivBrushSize1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/Textsize50"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/ssmall_dot" />
+                </LinearLayout>
+            </androidx.drawerlayout.widget.DrawerLayout>
+        </RelativeLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/horizontal_recycler_view_frameview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2.9"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/horizontal_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:divider="@null"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/divider"
+            android:orientation="horizontal" />
+    </FrameLayout>
+</LinearLayout>

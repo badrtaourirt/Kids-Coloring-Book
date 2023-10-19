@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/top_l1" android:background="@color/blue1" android:layout_width="match_parent" android:layout_height="match_parent">
+    <FrameLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="2.9">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/leftTop" android:padding="5dp" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:padding="1.67dp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/pen" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/menu1pencil"/>
+            </LinearLayout>
+            <LinearLayout android:padding="1.67dp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/mPaint" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/menu3bucket"/>
+            </LinearLayout>
+            <LinearLayout android:padding="1.67dp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/eraser" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/menu4eraser"/> /&gt; 
+            </LinearLayout>
+            <LinearLayout android:padding="1.67dp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/save" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/menu5save"/> /&gt; 
+            </LinearLayout>
+            <LinearLayout android:padding="1.67dp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/newPage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/menu7close"/> /&gt; 
+            </LinearLayout>
+            <LinearLayout android:padding="1.67dp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/back" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/back_1"/> /&gt; 
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/divider1" android:background="@drawable/divider" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleY="-1"/>
+    </FrameLayout>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="0.8" android:layout_above="@+id/horizontal_recycler_view" android:layout_below="@+id/leftTop">
+        <RelativeLayout android:id="@+id/drawing" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1.5">
+            <FrameLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
+                <com.coloring.page.DrawingPicture
+                    android:id="@+id/draw" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent"/>
+                <ImageView android:id="@+id/iv" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/spark"/>
+            </FrameLayout>
+            <androidx.drawerlayout.widget.DrawerLayout android:id="@+id/dr_layout_brush" android:layout_width="match_parent" android:layout_height="match_parent">
+                <LinearLayout android:layout_gravity="left|center_vertical|center_horizontal|center" android:orientation="vertical" android:id="@+id/drawer_brush" android:background="@drawable/tab" android:padding="5dp" android:layout_width="70dp" android:layout_height="180dp" android:rotation="180">
+                    <ImageView android:id="@+id/ivBrushSize3" android:layout_width="match_parent" android:layout_height="@dimen/Textsize50" android:layout_margin="5dp" android:src="@drawable/bbig_dot" android:layout_weight="1"/>
+                    <ImageView android:id="@+id/ivBrushSize2" android:layout_width="match_parent" android:layout_height="@dimen/Textsize50" android:layout_margin="5dp" android:src="@drawable/mmedium_dot" android:layout_weight="1"/>
+                    <ImageView android:id="@+id/ivBrushSize1" android:layout_width="match_parent" android:layout_height="@dimen/Textsize50" android:layout_margin="5dp" android:src="@drawable/ssmall_dot" android:layout_weight="1"/>
+                </LinearLayout>
+            </androidx.drawerlayout.widget.DrawerLayout>
+            <androidx.drawerlayout.widget.DrawerLayout android:id="@+id/dr_layout_color" android:layout_width="match_parent" android:layout_height="match_parent">
+                <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@+id/drawer_color" android:background="@drawable/tab" android:padding="5dp" android:layout_width="70dp" android:layout_height="180dp">
+                    <ImageView android:id="@+id/ivColorSize1" android:layout_width="match_parent" android:layout_height="@dimen/Textsize50" android:layout_margin="5dp" android:src="@drawable/c1_red1" android:layout_weight="1"/>
+                    <ImageView android:id="@+id/ivColorSize2" android:layout_width="match_parent" android:layout_height="@dimen/Textsize50" android:layout_margin="5dp" android:src="@drawable/pat_2" android:layout_weight="1"/>
+                    <ImageView android:id="@+id/ivColorSize3" android:layout_width="match_parent" android:layout_height="@dimen/Textsize50" android:layout_margin="5dp" android:src="@drawable/git_9" android:layout_weight="1"/>
+                </LinearLayout>
+            </androidx.drawerlayout.widget.DrawerLayout>
+        </RelativeLayout>
+    </FrameLayout>
+    <FrameLayout android:orientation="horizontal" android:id="@+id/horizontal_recycler_view_frameview" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="2.9">
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="5">
+                <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                    <LinearLayout android:orientation="horizontal" android:id="@+id/mainContent" android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/choose_colortype" android:padding="5dp" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/but_menu" android:layout_weight="1"/>
+                    </LinearLayout>
+                    <ImageView android:visibility="gone" android:clickable="false" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="5dp" android:src="@drawable/but_menu"/>
+                </FrameLayout>
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView android:layout_gravity="center" android:orientation="horizontal" android:id="@+id/horizontal_recycler_view" android:layout_width="match_parent" android:layout_height="wrap_content" android:divider="@null" android:layout_weight="1" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/divider" android:background="@drawable/divider" android:layout_width="match_parent" android:layout_height="match_parent"/>
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "978475932316",
+    "project_id": "spiderman-coloring-f18cc",
+    "storage_bucket": "spiderman-coloring-f18cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978475932316:android:ab4638352c121013fd2b59",
+        "android_client_info": {
+          "package_name": "com.coloring.page"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978475932316-9cv42lur1fk9vive5mmvssvv5d8uolh1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2bRw4H7WS1NiYvhqDZQ-qFUekgUTuxvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978475932316-9cv42lur1fk9vive5mmvssvv5d8uolh1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978475932316:android:dcf5e6e02d1532acfd2b59",
+        "android_client_info": {
+          "package_name": "com.own.kidscoloringbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978475932316-9cv42lur1fk9vive5mmvssvv5d8uolh1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2bRw4H7WS1NiYvhqDZQ-qFUekgUTuxvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978475932316-9cv42lur1fk9vive5mmvssvv5d8uolh1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

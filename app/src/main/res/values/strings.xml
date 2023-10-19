@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">coloring</string>
+
+
+    <string name="app_ad_id">ca-app-pub-3940256099942544~3347511713</string>
+
+
+    <string name="applovin_sdk_key"> </string>
+    <string name="applovin_banner">13a4d87678a2a055</string>
+    <string name="applovin_interstitial">22c411a7c729085a</string>
+    <string name="black_bat">Bat</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="later">Later</string>
+    <string name="message_quit">Quit The Game ??</string>
+    <string name="never">Never</string>
+    <string name="new_page_question">Save painting before open new page?</string>
+    <string name="no">No</string>
+    <string name="rate_app_str">5-Star rating would help us provide more free updates \n Thanks for the support !!</string>
+    <string name="rate_title">***** Like the Game *****</string>
+    <string name="save_alert">Save Alert</string>
+
+    <string name="store_picture_title">Do you want to Save Picture?</string>
+    <string name="yes">Yes</string>
+    <string name="yes_rate">Yes ! ! !</string>
+
+
+
+
+    <string name="inter_facebook">310454755021546_310460101687678</string>
+    <string name="banner_facebook">310454755021546_310460021687686</string>
+    <string name="Native_fan">310454755021546_310460185021003</string>
+
+</resources>
