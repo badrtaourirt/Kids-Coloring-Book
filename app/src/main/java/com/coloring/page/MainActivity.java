@@ -1,5 +1,7 @@
 package com.coloring.page;
 
+import static com.coloring.page.Facebook.rewardedVideoAd;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
@@ -23,8 +25,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
+
+import com.facebook.ads.AdSettings;
+import com.facebook.ads.AudienceNetworkAds;
 import com.onesignal.Continue;
 import com.onesignal.OneSignal;
 import com.onesignal.debug.LogLevel;
@@ -65,6 +72,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     ImageView unicorn;
 
 
+    Facebook facebook = new Facebook();
     WifiManager.AddNetworkResult adNetworks;
 
 
@@ -261,45 +269,50 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
             case R.id.unicorn:
-                MyConstant.COlORING_BOOK_ID = 0;
-                finish();
 
 
-                //  UnityAds.show(MainActivity.this,interID);
-//                ApplovinAds.showInter(this::NextActivity2);
-                //   AdmobAds.showInterAdmob(this::NextActivity2);
-//                        Ad_class.showInterstitial(MainActivity.this, new Ad_class.onLisoner() {
-//
-//                            public void click() {
-//
-//                            }
-//                        });
-                Intent intent2 = new Intent(MainActivity.this, GridActivityColoringBook.class);
-                startActivity(intent2);
+                if(rewardedVideoAd.isAdLoaded()) {
+                    facebook.showreward(new AdClosedListener() {
+                        @Override
+                        public void onAdClosed() {
+                            MyConstant.COlORING_BOOK_ID = 0;
+                            Intent intent2 = new Intent(MainActivity.this, GridActivityColoringBook.class);
+                            startActivity(intent2);
+                            finish();
+
+                        }
+                    });
+
+                }else{
+
+                    MyConstant.COlORING_BOOK_ID = 0;
+                    Intent intent2 = new Intent(MainActivity.this, GridActivityColoringBook.class);
+                    startActivity(intent2);
+                    finish();
+                }
+
                 break;
             case R.id.glow:
-                MyConstant.COlORING_BOOK_ID = 1;
-                finish();
 
+                if(rewardedVideoAd.isAdLoaded()) {
+                    facebook.showreward(new AdClosedListener() {
+                        @Override
+                        public void onAdClosed() {
+                            MyConstant.COlORING_BOOK_ID = 1;
+                            Intent intent1 = new Intent(MainActivity.this, GridActivityColoringBookGlow.class);
+                            startActivity(intent1);
+                            finish();
 
+                        }
+                    });
+                }else{
 
-              //  UnityAds.show(MainActivity.this,interID);
+                    MyConstant.COlORING_BOOK_ID = 1;
+                    Intent intent1 = new Intent(MainActivity.this, GridActivityColoringBookGlow.class);
+                    startActivity(intent1);
+                    finish();
+                }
 
-                Intent intent1 = new Intent(MainActivity.this, GridActivityColoringBookGlow.class);
-                startActivity(intent1);
-               // shoInter();
-
-                //               ApplovinAds.showInter(this::NextActivity1);
-                //               AdmobAds.showInterAdmob(this::NextActivity1);
-//                Ad_class.showInterstitial(MainActivity.this, new Ad_class.onLisoner() {
-//
-//                    public void click() {
-//
-//
-//                    }
-//                });
-//                Intent intent1 = new Intent(MainActivity.this, GridActivityColoringBookGlow.class);
-//                startActivity(intent1);
                 break;
             default:
                 return;
@@ -307,15 +320,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     }
 
-    private void NextActivity2() {
-        Intent intent2 = new Intent(MainActivity.this, GridActivityColoringBook.class);
-        startActivity(intent2);
-    }
-
-    private void NextActivity1() {
-        Intent intent1 = new Intent(MainActivity.this, GridActivityColoringBookGlow.class);
-        startActivity(intent1);
-    }
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -341,6 +345,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 // `requestPermission` completed unsuccessfully, check `r.getThrowable()` for more info on the failure reason
             }
         }));
+        AudienceNetworkAds.initialize(this);
 
 
 
@@ -351,13 +356,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mainActivity = this;
         intialize();
         context = this;
-
+        AdSettings.addTestDevice("36fc8bb6-f0dc-4fe5-8ba1-b1ec3c152e77");
+        facebook.fbinit(this);
         intializeIds();
         setupMediaPlayer();
         softKeyboardVisibility();
         animateButtons();
 
-
+        facebook.loadNativeAd(this);
 
         FrameLayout frameLayout = findViewById(R.id.native_frame);
         Ad_class.refreshAd(frameLayout, MainActivity.this);

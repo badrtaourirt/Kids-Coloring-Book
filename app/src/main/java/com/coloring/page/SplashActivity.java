@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.facebook.ads.AudienceNetworkAds;
+
 
 public class SplashActivity extends Activity {
     public static int appStartTimes;
@@ -31,6 +33,7 @@ public class SplashActivity extends Activity {
 
      //   admobAds = new AdmobAds(this);
       //  new AdmobAds(this).initialize();
+        AudienceNetworkAds.initialize(this);
 
         MyConstant.appStartFirstTime = true;
         if (this.sharedPreferenceLoadTime == null) {

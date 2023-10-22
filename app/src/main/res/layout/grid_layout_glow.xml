@@ -33,21 +33,21 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true">
-    </RelativeLayout>
+    </FrameLayout>
 
     <GridView
         android:id="@+id/grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:gravity="center"
         android:layout_marginTop="5dp"
+        android:gravity="center"
         android:numColumns="auto_fit"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"

@@ -45,6 +45,7 @@ dependencies {
 
     implementation 'androidx.work:work-runtime:2.7.1'
 
+    implementation 'com.facebook.android:audience-network-sdk:6.16.0'
 
     implementation 'com.onesignal:OneSignal:[5.0.0, 5.99.99]'
 }

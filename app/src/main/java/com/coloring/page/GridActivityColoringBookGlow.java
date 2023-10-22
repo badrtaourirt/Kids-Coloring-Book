@@ -1,5 +1,7 @@
 package com.coloring.page;
 
+import static com.coloring.page.Facebook.interstitialAd;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -94,6 +96,7 @@ public class GridActivityColoringBookGlow extends Activity implements View.OnCli
         }
     }
 
+    Facebook facebook = new Facebook();
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -107,15 +110,17 @@ public class GridActivityColoringBookGlow extends Activity implements View.OnCli
         this.topll = (LinearLayout) findViewById(R.id.topll);
         this.gridView = (GridView) findViewById(R.id.grid_view);
         this.gridView.setNumColumns(-1);
+        facebook.fbinit(this);
         this.gridView.setGravity(17);
         this.gridView.setHorizontalSpacing(i);
         this.gridView.setVerticalSpacing(i);
         this.gridView.setFastScrollEnabled(true);
         this.back = (ImageView) findViewById(R.id.back);
         this.back.setOnClickListener(this);
-        InitializeAds();
         MyApplication.setContext(this);
-    //    Ad_class.Show_banner(this, findViewById(R.id.adView));
+        facebook.showbanner(this);
+
+        //    Ad_class.Show_banner(this, findViewById(R.id.adView));
 
         //ApplovinAds.loadInterstitial();
      //   admobAds = new AdmobAds(this);
@@ -126,68 +131,49 @@ public class GridActivityColoringBookGlow extends Activity implements View.OnCli
 
         this.gridView.setAdapter(new ImageAdapterGlow(this));
         this.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
               //  UnityAds.show(GridActivityColoringBookGlow.this,interID);
                // UnityAds.load(interID);
 
-                PrintStream printStream = System.err;
-                printStream.println("posss::" + i);
-                if (i != 0) {
+                if(interstitialAd.isAdLoaded()) {
+                    facebook.showinterfb(new AdClosedListener() {
+                        @Override
+                        public void onAdClosed() {
+                            PrintStream printStream = System.err;
+                            printStream.println("posss::" + i);
+                            if (i != 0) {
 
-                    MyConstant.selectedImageFromBitmap = i;
-                    MyConstant.fromGridActivityColoringBook = true;
-                    MyConstant.selectedTool = 0;
+                                MyConstant.selectedImageFromBitmap = i;
+                                MyConstant.fromGridActivityColoringBook = true;
+                                MyConstant.selectedTool = 0;
+                            }
+
+                            GridActivityColoringBookGlow.this.
+
+
+                                    finishActivityOnItemSelect();
+                        }
+                    });
+
+                }else {
+
+                    PrintStream printStream = System.err;
+                    printStream.println("posss::" + i);
+                    if (i != 0) {
+
+                        MyConstant.selectedImageFromBitmap = i;
+                        MyConstant.fromGridActivityColoringBook = true;
+                        MyConstant.selectedTool = 0;
+                    }
+
+                    GridActivityColoringBookGlow.this.
+
+
+                            finishActivityOnItemSelect();
+
                 }
 
-                GridActivityColoringBookGlow.this.
-
-
-                        finishActivityOnItemSelect();
-
-
-             /*   ApplovinAds.showInter(new ApplovinAds.AdFinished() {
-                    @Override
-                    public void onAdFinished() {
-
-                    }
-                });
-
-              */
-
-
-
-
-             /*   AdmobAds.showInterAdmob(new AdmobAds.AdsFinished() {
-                    @Override
-                    public void onAdsFinished() {
-                        PrintStream printStream = System.err;
-                        printStream.println("posss::" + i);
-                        if (i != 0) {
-
-                            MyConstant.selectedImageFromBitmap = i;
-                            MyConstant.fromGridActivityColoringBook = true;
-                            MyConstant.selectedTool = 0;
-                        }
-
-                        GridActivityColoringBookGlow.this.
-
-                                finishActivityOnItemSelect();
-
-                    }
-                });
-
-              */
-
-
-
-//                Ad_class.showInterstitial(GridActivityColoringBookGlow.this, new Ad_class.onLisoner() {
-//
-//                    public void click() {
-//
-//
-//
-//                    }
-//                });
 
 
             }
@@ -203,10 +189,7 @@ public class GridActivityColoringBookGlow extends Activity implements View.OnCli
 
 
 
-    private void InitializeAds(){
-        myApplication = (MyApplication) getApplicationContext();
-        RelativeLayout view = findViewById(R.id.banner);
-    }
+
 
     @Override
     public void onDestroy() {

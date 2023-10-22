@@ -1,5 +1,7 @@
 package com.coloring.page;
 
+import static com.coloring.page.Facebook.interstitialAd;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -12,11 +14,9 @@ import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 
 
@@ -106,9 +106,6 @@ public class GridActivityColoringBook extends Activity implements View.OnClickLi
         super.onBackPressed();
         finishActivity();
     }
-   // private void NextActivity2() {
-       // finishActivity();
-  //  }
 
     @Override
     public void onClick(View view) {
@@ -116,9 +113,10 @@ public class GridActivityColoringBook extends Activity implements View.OnClickLi
 
 
             finishActivity();
-           // shoInter();
         }
     }
+
+    Facebook facebook = new Facebook();
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -139,79 +137,46 @@ public class GridActivityColoringBook extends Activity implements View.OnClickLi
         this.gridView.setFastScrollEnabled(true);
         this.back = (ImageView) findViewById(R.id.back);
         this.back.setOnClickListener(this);
-        InitializeAds();
         MyApplication.setContext(this);
-
-        //Ad_class.Show_banner(this, findViewById(R.id.adView));
-        //ApplovinAds.loadInterstitial();
-
-//        FrameLayout frameLayout = findViewById(R.id.adView);
-        //AdmobAds.loadBannerAdmob();
-       // AdmobAds.showBannerAdmob(frameLayout, GridActivityColoringBook.this);
-     //   AdmobAds.loadInterAdmob();
+        facebook.showbanner(this);
 
         this.gridView.setAdapter(new ImageAdapter(this));
         this.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
 
 
-                GridActivityColoringBook.pos = i;
-                if (com.coloring.page.MyConstant.COlORING_BOOK_ID == 0) {
-                    if (i != 0) {
+                if(interstitialAd.isAdLoaded()) {
+                    facebook.showinterfb(new AdClosedListener() {
+                        @Override
+                        public void onAdClosed() {
+                            GridActivityColoringBook.pos = i;
+                            if (com.coloring.page.MyConstant.COlORING_BOOK_ID == 0) {
+                                if (i != 0) {
 
 
-                        com.coloring.page.MyConstant.selectedImageFromBitmap = i;
-                        com.coloring.page.MyConstant.fromGridActivityColoringBook = true;
-                        com.coloring.page.MyConstant.selectedTool = 0;
-                    }
-                    GridActivityColoringBook.this.finishActivityOnItemSelect();
-                }
-                
-
-
-               // UnityAds.show(GridActivityColoringBook.this,interID);
-                //UnityAds.load(interID);
-            /*    ApplovinAds.showInter(new ApplovinAds.AdFinished() {
-                    @Override
-                    public void onAdFinished() {
-
-                    }
-                });
-
-             */
-
-             /*   AdmobAds.showInterAdmob(new AdmobAds.AdsFinished() {
-                    @Override
-                    public void onAdsFinished() {
-                        GridActivityColoringBook.pos = i;
-                        if (com.coloring.page.MyConstant.COlORING_BOOK_ID == 0) {
-                            if (i != 0) {
-
-
-                                com.coloring.page.MyConstant.selectedImageFromBitmap = i;
-                                com.coloring.page.MyConstant.fromGridActivityColoringBook = true;
-                                com.coloring.page.MyConstant.selectedTool = 0;
+                                    com.coloring.page.MyConstant.selectedImageFromBitmap = i;
+                                    com.coloring.page.MyConstant.fromGridActivityColoringBook = true;
+                                    com.coloring.page.MyConstant.selectedTool = 0;
+                                }
+                                GridActivityColoringBook.this.finishActivityOnItemSelect();
                             }
-                            GridActivityColoringBook.this.finishActivityOnItemSelect();
+
                         }
+                    });
+                }else{
+
+                    GridActivityColoringBook.pos = i;
+                    if (com.coloring.page.MyConstant.COlORING_BOOK_ID == 0) {
+                        if (i != 0) {
+
+
+                            com.coloring.page.MyConstant.selectedImageFromBitmap = i;
+                            com.coloring.page.MyConstant.fromGridActivityColoringBook = true;
+                            com.coloring.page.MyConstant.selectedTool = 0;
+                        }
+                        GridActivityColoringBook.this.finishActivityOnItemSelect();
                     }
-                });
-
-              */
-
-
-//                Ad_class.showInterstitial(GridActivityColoringBook.this, new Ad_class.onLisoner() {
-//
-//                    public void click() {
-//
-//
-//
-//                    }
-//                });
-
-
-
-
+                }
             }
         });
         this.gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -224,10 +189,6 @@ public class GridActivityColoringBook extends Activity implements View.OnClickLi
 
 
 
-    private void InitializeAds(){
-        myApplication = (MyApplication) getApplicationContext();
-        RelativeLayout view = findViewById(R.id.banner);
-    }
 
     @Override
     public void onDestroy() {

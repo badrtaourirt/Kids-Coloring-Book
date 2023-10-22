@@ -1,6 +1,7 @@
 package com.coloring.page;
 
 import static com.coloring.page.CapturePhotoUtils.takeScreenshot;
+import static com.coloring.page.Facebook.rewardedVideoAd;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -693,12 +694,27 @@ public class DrawActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.back:
-                closeAllDrawer();
-                com.coloring.page.MyConstant.isBackFromGlow = false;
-               // shoInter();
-                savePageDialogOnBackPressed();
 
-              //  AdmobAds.showInterAdmob(this::NextActivity2);
+                if(rewardedVideoAd.isAdLoaded()) {
+                    facebook.showreward(new AdClosedListener() {
+                        @Override
+                        public void onAdClosed() {
+                            closeAllDrawer();
+                            com.coloring.page.MyConstant.isBackFromGlow = false;
+                            // shoInter();
+                            savePageDialogOnBackPressed();
+                        }
+                    });
+                }else{
+
+                    closeAllDrawer();
+                    com.coloring.page.MyConstant.isBackFromGlow = false;
+                    // shoInter();
+                    savePageDialogOnBackPressed();
+
+                }
+
+
 
                 break;
             case R.id.choose_colortype:
@@ -752,11 +768,12 @@ public class DrawActivity extends Activity implements View.OnClickListener {
     }
 
 
+    Facebook facebook = new Facebook();
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         MyApplication.setContext(this);
-       // admobAds = new AdmobAds(this);
-       // AdmobAds.loadInterAdmob();
+        facebook.fbinit(this);
+
     }
 
     public void onDestroy() {

@@ -13,7 +13,6 @@ import com.squareup.picasso.Picasso;
 
 public class ImageAdapter extends BaseAdapter {
      Context mContext;
-     View myView;
 
     public ImageAdapter(Context context) {
         System.err.println("image adapte");
@@ -37,7 +36,7 @@ public class ImageAdapter extends BaseAdapter {
         int i3 = (i2 / 2) - (i2 / 40);
         int i4 = (i3 * 3) / 2;
         if (view == null) {
-            view = ((LayoutInflater) this.mContext.getSystemService("layout_inflater")).inflate(R.layout.grid_layout_view, viewGroup, false);
+            view = ((LayoutInflater) this.mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.grid_layout_view, viewGroup, false);
         }
         FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.imageView);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageViewInside);

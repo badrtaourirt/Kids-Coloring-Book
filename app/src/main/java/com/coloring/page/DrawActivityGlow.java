@@ -1,6 +1,7 @@
 package com.coloring.page;
 
 import static com.coloring.page.CapturePhotoUtils.takeScreenshot;
+import static com.coloring.page.Facebook.rewardedVideoAd;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -598,15 +599,27 @@ public class DrawActivityGlow extends Activity implements View.OnClickListener {
         savePageDialogOnBackPressed();
     }
 
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.back:
-                MyConstant.isBackFromGlow = true;
-                closeAllDrawer();
-             //   shoInter();
-                savePageDialogOnBackPressed();
-              //  AdmobAds.showInterAdmob(this::NextActivity2);
+
+                if(rewardedVideoAd.isAdLoaded()) {
+                    facebook.showreward(new AdClosedListener() {
+                        @Override
+                        public void onAdClosed() {
+                            MyConstant.isBackFromGlow = true;
+                            closeAllDrawer();
+                            savePageDialogOnBackPressed();
+                        }
+                    });
+                }else{
+
+                    MyConstant.isBackFromGlow = true;
+                    closeAllDrawer();
+                    savePageDialogOnBackPressed();
+                }
                 return;
             case R.id.dashed_pen:
                 MyConstant.TYPE_GLOW_PEN = 3;
@@ -653,6 +666,7 @@ public class DrawActivityGlow extends Activity implements View.OnClickListener {
     }
 
 
+    Facebook facebook = new Facebook();
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -660,6 +674,7 @@ public class DrawActivityGlow extends Activity implements View.OnClickListener {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         drawActivityGlow = this;
         initialize();
+        facebook.fbinit(this);
         initializeOnSizeChangedValue();
         initializeMediaPlayer();
         setContentView(R.layout.activity_draw_glow);
